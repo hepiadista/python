@@ -91,7 +91,7 @@ def main():
 			break
 		
 		if ' ' not in board.values():
-			print('\033[1;244mDraw\033[0m')
+			print('\033[1;29mThe game ended in a draw. \033[0m')
 			break
 		
 		computers_turn(board)
