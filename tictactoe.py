@@ -78,9 +78,9 @@ def win_condition(board, symbol):
 
 def main():
 	print('\033[1;29mChoose one of the numbers to make a move.\033[0m')
-	print(f'| {1} | {2} | {3} |')
-	print(f'| {4} | {5} | {6} |')
-	print(f'| {7} | {8} | {9} |')
+	print('| 1 | 2 | 3 |')
+	print('| 4 | 5 | 6 |')
+	print('| 7 | 8 | 9 |')
 	while True:
 		
 		players_turn(board)
