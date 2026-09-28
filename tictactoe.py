@@ -87,7 +87,6 @@ def main():
 		
 		if win_condition(board, 'X'):
 			print('\033[1;32mCongratulations, you won!\n(the computer is dumb!)\033[0m')
-			print('')
 			break
 		
 		if ' ' not in board.values():
