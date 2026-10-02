@@ -97,18 +97,16 @@ def player_vs_computer():
 		
 		if win_condition(board, 'X'):
 			print('\033[1;32mCongratulations, you won!\n(the computer is dumb!)\033[0m\n')
-			print('PLAY AGAIN?')
 			break
 		
 		if ' ' not in board.values():
-			print('\033[1;29mThe game ended in a draw :/ \033[0m')
+			print('\033[1;29mThe game ended in a draw :/ \033[0m\n')
 			break
 		
 		computers_turn(board)
 			
 		if win_condition(board, 'O'):
 			print('\033[1;31mComputer won!\033[0m\n')
-			print('PLAY AGAIN?')
 			break
 
 
@@ -123,19 +121,16 @@ def player_vs_player():
 		
 		if win_condition(board, 'X'):
 			print('\033[1;32mCongratulations player X, you won!\033[0m\n')
-			print('PLAY AGAIN?')
 			break
 		
 		if ' ' not in board.values():
-			print('\033[1;29mThe game ended in a draw :/ \033[0m')
+			print('\033[1;29mThe game ended in a draw :/ \033[0m\n')
 			break
 			
 		players_turn(board, 'O', 'Player O chose position')
 		
 		if win_condition(board, 'O'):
 			print('\033[1;32mCongratulations player O, you won!\033[0m\n')
-			print('PLAY AGAIN?')
-			print('')
 			break
 			
 			
