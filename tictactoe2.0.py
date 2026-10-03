@@ -51,25 +51,25 @@ def win_condition(board, symbol):
 		return True
 
 	elif board[4] == symbol and board[5] == symbol and board[6] == symbol:
-	    return True
+		return True
 	
 	elif board[7] == symbol and board[8] == symbol and board[9] == symbol:
-	    return True
+		return True
 	
 	elif board[1] == symbol and board[4] == symbol and board[7] == symbol:
-	    return True
+		return True
 	
 	elif board[2] == symbol and board[5] == symbol and board[8] == symbol:
-	    return True
+		return True
 	
 	elif board[3] == symbol and board[6] == symbol and board[9] == symbol:
-	    return True
+		return True
 	
 	elif board[1] == symbol and board[5] == symbol and board[9] == symbol:
-	    return True
+		return True
 	
 	elif board[3] == symbol and board[5] == symbol and board[7] == symbol:
-	    return True
+		return True
 	
 	return False
 	
