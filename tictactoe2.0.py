@@ -5,7 +5,6 @@ def show_board(board):
 	print(f'| {board[1]} | {board[2]} | {board[3]} |')
 	print(f'| {board[4]} | {board[5]} | {board[6]} |')
 	print(f'| {board[7]} | {board[8]} | {board[9]} |\n')
-	
 
 
 def players_turn(board, symbol, text):
@@ -21,29 +20,27 @@ def players_turn(board, symbol, text):
 				break
 			
 			else: 
-				print('\033[1;31mPosition already occupied, try another one!\033[0m')
+				print('\033[1;31mPosition already occupied, try another!\033[0m')
 				show_board(board)
 				
 		except (ValueError, KeyError):
 			print('\033[1;31mOnly numbers between 1 and 9 are allowed.\033[0m')
 			show_board(board)
-
 			
 									
 def computers_turn(board):
-	random_pos = random.randint(1, 9)
+	rand = random.randint(1, 9)
 	while True:
-		if board[random_pos] != ' ':
+		if board[rand] != ' ':
 			random_pos = random.randint(1, 9)
-		elif board[random_pos] == ' ':
+		elif board[rand] == ' ':
 			break
 			
 	print("Computer's turn: ")
 	time.sleep(1)
-	board[random_pos] = 'O'
+	board[rand] = 'O'
 	print(f'\033[1;33mComputer chose position {random_pos}\033[0m')
 	show_board(board)
-	
 
 
 def win_condition(board, symbol):
@@ -74,7 +71,6 @@ def win_condition(board, symbol):
 	return False
 	
 	
-	
 def header(title):
 	print('-' * 36)
 	print(title)
@@ -83,16 +79,13 @@ def header(title):
 	print(f'| 1 | 2 | 3 |')
 	print(f'| 4 | 5 | 6 |')
 	print(f'| 7 | 8 | 9 |')
-		
 
 
 def player_vs_computer():
 	board = {1:' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' '}
-	
 	header('Welcome to player vs computer mode')
 	
 	while True:
-		
 		players_turn(board, 'X', 'You chose position')
 		
 		if win_condition(board, 'X'):
@@ -110,10 +103,8 @@ def player_vs_computer():
 			break
 
 
-
 def player_vs_player():
 	board = {1:' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' '}
-	
 	header('Welcome to player vs player mode')
 	
 	while True:
@@ -134,15 +125,12 @@ def player_vs_player():
 			break
 			
 			
-			
 def main():
 	while True:
 		print('[1] - Player vs player.\n[2] - Play against computer.\n[3] - Exit')
-		
 		choice = input('-: ')
 		
 		time.sleep(1)
-		
 		if choice == '1':
 			player_vs_player()
 			
@@ -154,7 +142,6 @@ def main():
 			
 		else:
 			print('\033[1;31mInvalid character!\033[0m')
-	
 	
 	
 if __name__ == '__main__':
