@@ -10,7 +10,7 @@ def show_board(board):
 def players_turn(board, symbol, text):
 	while True:
 		try:
-			number = int(input(f"Player {symbol}'s turn: "))
+			number = int(input(f'Player {symbol}\'s turn: '))
 			time.sleep(1)
 		
 			if board[number] == ' ':
@@ -20,7 +20,7 @@ def players_turn(board, symbol, text):
 				break
 			
 			else: 
-				print('\033[1;31mPosition already occupied, try another!\033[0m')
+				print('\033[1;31mPosition already taken, try another one!\033[0m')
 				show_board(board)
 				
 		except (ValueError, KeyError):
@@ -32,14 +32,14 @@ def computers_turn(board):
 	rand = random.randint(1, 9)
 	while True:
 		if board[rand] != ' ':
-			random_pos = random.randint(1, 9)
+			rand = random.randint(1, 9)
 		elif board[rand] == ' ':
 			break
 			
-	print("Computer's turn: ")
+	print('Computer\'s turn: ')
 	time.sleep(1)
 	board[rand] = 'O'
-	print(f'\033[1;33mComputer chose position {random_pos}\033[0m')
+	print(f'\033[1;33mComputer chose position {rand}\033[0m')
 	show_board(board)
 
 
@@ -71,10 +71,22 @@ def win_condition(board, symbol):
 	return False
 	
 	
+def check_win(board, symbol, text):
+	if win_condition(board, symbol):
+		print(text)
+		return True
+		
+	if ' ' not in board.values():
+		print('\033[1;29mThe game ended in a draw :/ \033[0m\n')
+		return True
+		
+	return False
+	
+	
 def header(title):
-	print('-' * 36)
+	print('-' * 45)
 	print(title)
-	print('-' * 36)
+	print('-' * 45)
 	print('\033[1;33mChoose one of the numbers to make a move.\033[0m')
 	print(f'| 1 | 2 | 3 |')
 	print(f'| 4 | 5 | 6 |')
@@ -83,51 +95,39 @@ def header(title):
 
 def player_vs_computer():
 	board = {1:' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' '}
-	header('Welcome to player vs computer mode')
+	header('Welcome to Player vs Computer mode')
 	
 	while True:
 		players_turn(board, 'X', 'You chose position')
 		
-		if win_condition(board, 'X'):
-			print('\033[1;32mCongratulations, you won!\n(the computer is dumb!)\033[0m\n')
-			break
-		
-		if ' ' not in board.values():
-			print('\033[1;29mThe game ended in a draw :/ \033[0m\n')
+		if check_win(board, 'X', '\033[1;32mCongratulations you won!\033[0m\n'):
 			break
 		
 		computers_turn(board)
 			
-		if win_condition(board, 'O'):
-			print('\033[1;31mComputer won!\033[0m\n')
+		if check_win(board, 'O', '\033[1;31mThe computer won\033[0m\n'):
 			break
 
 
 def player_vs_player():
 	board = {1:' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' '}
-	header('Welcome to player vs player mode')
+	header('Welcome to Player vs Player mode')
 	
 	while True:
 		players_turn(board, 'X', 'Player X chose position')
 		
-		if win_condition(board, 'X'):
-			print('\033[1;32mCongratulations player X, you won!\033[0m\n')
-			break
-		
-		if ' ' not in board.values():
-			print('\033[1;29mThe game ended in a draw :/ \033[0m\n')
+		if check_win(board, 'X', '\033[1;32mCongratulations Player X you won!\033[0m\n'):
 			break
 			
 		players_turn(board, 'O', 'Player O chose position')
 		
-		if win_condition(board, 'O'):
-			print('\033[1;32mCongratulations player O, you won!\033[0m\n')
+		if check_win(board, 'O', '\033[1;32mCongratulations Player O you won!\033[0m\n'):
 			break
 			
 			
 def main():
 	while True:
-		print('[1] - Player vs player.\n[2] - Play against computer.\n[3] - Exit')
+		print('[1] - Player vs Player.\n[2] - Play against computer.\n[3] - Exit')
 		choice = input('-: ')
 		
 		time.sleep(1)
